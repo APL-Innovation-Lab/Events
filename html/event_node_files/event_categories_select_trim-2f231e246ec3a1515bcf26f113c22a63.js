@@ -1,0 +1,2 @@
+console.log('Event Categories select trim');document.addEventListener('DOMContentLoaded',function(){var selectElement=document.getElementById('edit-field-event-category-tags-');if(selectElement){var options=selectElement.options;var removeAfterIndex=-1;for(var i=0;i<options.length;i++){if(options[i].text.trim()==='Writing'){removeAfterIndex=i;break;}}
+if(removeAfterIndex!==-1){for(var j=options.length-1;j>removeAfterIndex;j--){selectElement.remove(j);}}}else{}});
