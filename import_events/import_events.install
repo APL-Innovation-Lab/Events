@@ -1,0 +1,26 @@
+<?php
+
+declare(strict_types = 1);
+
+/**
+ * @file
+ * Install, update, and uninstall functions for import_events.
+ */
+
+use Drupal\Core\File\FileSystemInterface;
+
+/**
+ * Copies the events file to the sites/default/files folder.
+ */
+function import_events_install(): void {
+  // Create the events file directory and ensure it's writable.
+  $directory = \Drupal::config('system.file')->get('default_scheme') . '://import_events';
+  \Drupal::service('file_system')->prepareDirectory($directory, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS);
+
+  // Copy the rooms file to import_locations directory.
+  // @todo Use \Drupal\Core\Extension\ExtensionPathResolver::getPath() when we
+  // require Drupal > 9.3.0.
+  $module_path = \Drupal::moduleHandler()->getModule('import_events')->getPath();
+  $file_source = $module_path . '/artifacts/import_events.json';
+  \Drupal::service('file_system')->copy($file_source, $directory . '/import_events.json', FileSystemInterface::EXISTS_REPLACE);
+}
