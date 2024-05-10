@@ -1,0 +1,12 @@
+
+.box {
+  width: 380px;
+  border: 1.5px solid rgb(143, 143, 143);
+  border-radius: 7px;
+  padding-left: 100px;
+  /*background: linear-gradient(to right, #ed0e0e 5%,#ed0e0e 5%,#ed0e0e 5%,white 5%,white 100%);*/
+}
+
+.check {
+    width: 50px;
+}
