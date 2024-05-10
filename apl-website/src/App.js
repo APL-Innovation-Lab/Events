@@ -163,7 +163,7 @@ function App() {
   useEffect(() => {
     async function fetchData() {
     try {
-      const response = await fetch("https://dev-apl-cms.pantheonsite.io/api/events");
+      const response = await fetch("https://apl-innovation-lab.github.io/aplapi/events.json");
 
       const json = await response.json();
       setEvents(json);
