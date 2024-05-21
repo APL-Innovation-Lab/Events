@@ -156,10 +156,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (searchQuery.length > 0) {
-      const filteredEvents = events.filter((event) =>
-        event.title.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+    if (searchQuery.length > 0 && events) {
+      const uniqueEvents = new Set();
+      const filteredEvents = events.filter((event) => {
+        const isUnique = !uniqueEvents.has(event.title);
+        uniqueEvents.add(event.title);
+        return event.title.toLowerCase().includes(searchQuery.toLowerCase()) && isUnique;
+      });
       setSearchResults(filteredEvents);
     } else {
       setSearchResults([]);
