@@ -10,6 +10,9 @@ import CustomEvent from "./components/CustomEvent";
 import SearchResultsModal from "./components/SearchResultsModal";
 import EventPage from "./components/EventPage";
 
+// Import the JSON file directly
+import eventCategories from "./event_json_files/event-categories.json";
+
 const localizer = momentLocalizer(moment);
 
 const eventPropGetter = (event) => {
@@ -25,6 +28,7 @@ const eventPropGetter = (event) => {
 
 function App() {
   const [events, setEvents] = useState(null);
+  const [categories, setCategories] = useState({});
   const [selectedAges, setSelectedAges] = useState(new Set());
   const [selectedCategories, setSelectedCategories] = useState(new Set());
   const [selectedLocations, setSelectedLocations] = useState(new Set());
@@ -41,6 +45,31 @@ function App() {
   const handleEventClick = (event) => {
     navigate(`/event/${event.id}`, { state: { event } });
   };
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const eventResponse = await fetch("https://apl-innovation-lab.github.io/aplapi/events.json");
+        if (!eventResponse.ok) {
+          throw new Error(`HTTP error! status: ${eventResponse.status}`);
+        }
+        const eventJson = await eventResponse.json();
+        setEvents(eventJson);
+        console.log("Events fetched successfully:", eventJson);
+
+        // Use the imported JSON data directly
+        const categoryMap = eventCategories.reduce((acc, category) => {
+          acc[category.id] = category.name;
+          return acc;
+        }, {});
+        setCategories(categoryMap);
+        console.log("Categories loaded successfully:", categoryMap);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    }
+    fetchData();
+  }, []);
 
   const uniqueAges = useMemo(() => {
     if (events === null) {
@@ -150,20 +179,6 @@ function App() {
   });
 
   useEffect(() => {
-    async function fetchData() {
-    try {
-      const response = await fetch("https://apl-innovation-lab.github.io/aplapi/events.json");
-      const json = await response.json();
-      setEvents(json);
-    }
-    catch (error) {
-      console.log(error);
-    }
-    }
-    fetchData();
-  }, []);
-
-  useEffect(() => {
     if (searchQuery.length > 0 && events) {
       const uniqueEvents = new Set();
       const filteredEvents = events.filter((event) => {
@@ -258,6 +273,7 @@ function App() {
                     <div key={category}>
                       <ColorCheckbox
                         id={`category-${category}`}
+                        label={categories[category] || `category-${category}`}
                         checked={selectedCategories.has(category)}
                         onChange={() => handleCategoryChange(category)}
                       />

@@ -1,7 +1,7 @@
 import React from "react";
 import "./ColorCheckbox.css";
 
-export default function ColorCheckbox({ id, checked, onChange }) {
+export default function ColorCheckbox({ id, checked, onChange, label }) {
   var colorScheme = {
     1900: "#ed0e0e",
     2478: "#f5b342",
@@ -38,7 +38,7 @@ export default function ColorCheckbox({ id, checked, onChange }) {
         checked={checked}
         onChange={onChange}
       />
-      <label htmlFor={id}>{id}</label>
+      <label htmlFor={id}>{label ? label : id}</label>
     </div>
   );
 }
