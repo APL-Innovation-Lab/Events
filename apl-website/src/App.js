@@ -60,6 +60,14 @@ function App() {
     return Array.from(categories);
   }, [events]);
 
+  const uniqueLocations = useMemo(() => {
+    if (events === null) {
+      return []; // or whatever default value you prefer
+    }
+    const locations = new Set(events.map((event) => event.field_event_loc));
+    return Array.from(locations);
+  }, [events]);
+
   const handleAllEventsChange = () => {
     setShowAllEvents(!showAllEvents);
     setSelectedAges(new Set());
@@ -75,7 +83,7 @@ function App() {
       newAges.add(age);
     }
     setSelectedAges(newAges);
-    setShowAllEvents(newAges.size === 0 && selectedCategories.size === 0);
+    setShowAllEvents(newAges.size === 0 && selectedCategories.size === 0 && selectedLocations.size === 0);
   };
 
   const handleCategoryChange = (category) => {
@@ -86,7 +94,7 @@ function App() {
       newCategories.add(category);
     }
     setSelectedCategories(newCategories);
-    setShowAllEvents(newCategories.size === 0 && selectedAges.size === 0);
+    setShowAllEvents(newCategories.size === 0 && selectedAges.size === 0 && selectedLocations.size === 0);
   };
 
   const handleLocationChange = (location) => {
@@ -97,7 +105,7 @@ function App() {
       newLocations.add(location);
     }
     setSelectedLocations(newLocations);
-    setShowAllEvents(newLocations.size === 0);
+    setShowAllEvents(newLocations.size === 0 && selectedAges.size === 0 && selectedCategories.size === 0);
   };
 
   const filteredEvents = useMemo(() => {
@@ -261,11 +269,11 @@ function App() {
                   Filter by Location
                 </button>
                 {locationOpen &&
-                  uniqueCategories.map((location) => (
+                  uniqueLocations.map((location) => (
                     <div key={location}>
                       <ColorCheckbox
                         id={`${location}`}
-                        checked={selectedCategories.has(location)}
+                        checked={selectedLocations.has(location)}
                         onChange={() => handleLocationChange(location)}
                       />
                     </div>
