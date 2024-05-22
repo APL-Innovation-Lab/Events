@@ -10,8 +10,9 @@ import CustomEvent from "./components/CustomEvent";
 import SearchResultsModal from "./components/SearchResultsModal";
 import EventPage from "./components/EventPage";
 
-// Import the JSON file directly
+// Import the JSON files directly
 import eventCategories from "./event_json_files/event-categories.json";
+import eventLocations from "./event_json_files/event-locations.json";
 
 const localizer = momentLocalizer(moment);
 
@@ -29,6 +30,7 @@ const eventPropGetter = (event) => {
 function App() {
   const [events, setEvents] = useState(null);
   const [categories, setCategories] = useState({});
+  const [locations, setLocations] = useState({});
   const [selectedAges, setSelectedAges] = useState(new Set());
   const [selectedCategories, setSelectedCategories] = useState(new Set());
   const [selectedLocations, setSelectedLocations] = useState(new Set());
@@ -39,10 +41,11 @@ function App() {
   const [locationOpen, setLocationOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  
+
   const navigate = useNavigate();
 
   const handleEventClick = (event) => {
+    console.log("Event clicked:", event.id);
     navigate(`/event/${event.id}`, { state: { event } });
   };
 
@@ -57,13 +60,22 @@ function App() {
         setEvents(eventJson);
         console.log("Events fetched successfully:", eventJson);
 
-        // Use the imported JSON data directly
+        // Use the imported JSON data directly for categories
         const categoryMap = eventCategories.reduce((acc, category) => {
           acc[category.id] = category.name;
           return acc;
         }, {});
         setCategories(categoryMap);
         console.log("Categories loaded successfully:", categoryMap);
+
+        // Use the imported JSON data directly for locations
+        const locationMap = eventLocations.reduce((acc, location) => {
+          acc[location.id] = location.name;
+          return acc;
+        }, {});
+        setLocations(locationMap);
+        console.log("Locations loaded successfully:", locationMap);
+
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
@@ -166,31 +178,32 @@ function App() {
   const convertedEvents = filteredEvents.map((event) => {
     const startTimeStamp = new Date(event.field_slr_time_start);
     const endTimeStamp = new Date(event.field_slr_time_end);
-    
+
     return {
       id: event.nid,
       title: event.title,
-      start: new Date(startTimeStamp),
-      end: new Date(endTimeStamp),
+      start: startTimeStamp,
+      end: endTimeStamp,
       desc: event.body,
-      location: event.field_event_loc,
+      location: locations[event.field_event_loc] || event.field_event_loc, // Use location name
       allDay: false,
     };
   });
 
   useEffect(() => {
     if (searchQuery.length > 0 && events) {
-      const uniqueEvents = new Set();
-      const filteredEvents = events.filter((event) => {
-        const isUnique = !uniqueEvents.has(event.title);
-        uniqueEvents.add(event.title);
-        return event.title.toLowerCase().includes(searchQuery.toLowerCase()) && isUnique;
+      const filteredEvents = convertedEvents.filter((event) => {
+        return event.title.toLowerCase().includes(searchQuery.toLowerCase());
       });
       setSearchResults(filteredEvents);
     } else {
       setSearchResults([]);
     }
   }, [searchQuery, events]);
+
+  function formatAgeCategory(age) {
+    return age.replace(/(\D+)(\d+)$/, '$1 ($2)');
+  }  
 
   const eventStyleGetter = (event) => {
     let style = {
@@ -207,13 +220,13 @@ function App() {
         display: 'inline-block !important',
       },
     };
-  
+
     if (localizer.view === 'day') {
       style.style.height = '35px';
     } else {
       style.style.height = '25px';
     }
-  
+
     return style;
   };
 
@@ -258,6 +271,7 @@ function App() {
                     <div key={age}>
                       <ColorCheckbox
                         id={`age-${age}`}
+                        label={formatAgeCategory(age.toString().charAt(0).toUpperCase() + age.toString().slice(1))}
                         checked={selectedAges.has(age)}
                         onChange={() => handleAgeChange(age)}
                       />
@@ -288,7 +302,8 @@ function App() {
                   uniqueLocations.map((location) => (
                     <div key={location}>
                       <ColorCheckbox
-                        id={`${location}`}
+                        id={`location-${location}`}
+                        label={locations[location] || `location-${location}`}
                         checked={selectedLocations.has(location)}
                         onChange={() => handleLocationChange(location)}
                       />
