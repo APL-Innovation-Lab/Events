@@ -2,6 +2,7 @@
   "name": "apl-website",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://apl-innovation-lab.github.io/Events/",
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
@@ -18,6 +19,7 @@
     "react-big-calendar": "^1.8.4",
     "react-calendar": "^4.6.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.25.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
