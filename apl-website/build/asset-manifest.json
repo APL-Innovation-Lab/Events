@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/Events/apl-website/static/css/main.928add91.css",
-    "main.js": "/Events/apl-website/static/js/main.aa9dac09.js",
-    "static/js/453.4b0e5890.chunk.js": "/Events/apl-website/static/js/453.4b0e5890.chunk.js",
-    "static/media/inter-latin-ext-400-normal.woff": "/Events/apl-website/static/media/inter-latin-ext-400-normal.40b3b0d5e09a90fb6e3e.woff",
-    "static/media/inter-latin-ext-400-normal.woff2": "/Events/apl-website/static/media/inter-latin-ext-400-normal.0f9e8d4e940df8f6edfe.woff2",
-    "static/media/inter-latin-400-normal.woff": "/Events/apl-website/static/media/inter-latin-400-normal.08a02fd275ecea6ef662.woff",
-    "static/media/inter-latin-400-normal.woff2": "/Events/apl-website/static/media/inter-latin-400-normal.f1535355a7df553be385.woff2",
-    "static/media/inter-cyrillic-ext-400-normal.woff": "/Events/apl-website/static/media/inter-cyrillic-ext-400-normal.cd2ad378115f549d3c5b.woff",
-    "static/media/inter-greek-400-normal.woff": "/Events/apl-website/static/media/inter-greek-400-normal.1eeaf1d0bde712085ffc.woff",
-    "static/media/inter-cyrillic-ext-400-normal.woff2": "/Events/apl-website/static/media/inter-cyrillic-ext-400-normal.ac62c8eba7f954b48546.woff2",
-    "static/media/inter-cyrillic-400-normal.woff": "/Events/apl-website/static/media/inter-cyrillic-400-normal.fa67b2dd0048a5433bd5.woff",
-    "static/media/inter-greek-400-normal.woff2": "/Events/apl-website/static/media/inter-greek-400-normal.be0e76b30a7663adf9eb.woff2",
-    "static/media/inter-greek-ext-400-normal.woff": "/Events/apl-website/static/media/inter-greek-ext-400-normal.708f2f7425851a3b7633.woff",
-    "static/media/inter-cyrillic-400-normal.woff2": "/Events/apl-website/static/media/inter-cyrillic-400-normal.fa78d8d6788399bf6527.woff2",
-    "static/media/inter-vietnamese-400-normal.woff": "/Events/apl-website/static/media/inter-vietnamese-400-normal.6eab7f5e6cae783b49bf.woff",
-    "static/media/inter-greek-ext-400-normal.woff2": "/Events/apl-website/static/media/inter-greek-ext-400-normal.1e2b9039d9ecdbea5d80.woff2",
-    "static/media/inter-vietnamese-400-normal.woff2": "/Events/apl-website/static/media/inter-vietnamese-400-normal.5952d3d3c5df5a2f8e09.woff2",
-    "index.html": "/Events/apl-website/index.html",
-    "main.928add91.css.map": "/Events/apl-website/static/css/main.928add91.css.map",
-    "main.aa9dac09.js.map": "/Events/apl-website/static/js/main.aa9dac09.js.map",
-    "453.4b0e5890.chunk.js.map": "/Events/apl-website/static/js/453.4b0e5890.chunk.js.map"
+    "main.css": "/Events/apl-website/build/static/css/main.9cbd827c.css",
+    "main.js": "/Events/apl-website/build/static/js/main.aaab5abc.js",
+    "static/js/453.4b0e5890.chunk.js": "/Events/apl-website/build/static/js/453.4b0e5890.chunk.js",
+    "static/media/inter-latin-ext-400-normal.woff": "/Events/apl-website/build/static/media/inter-latin-ext-400-normal.40b3b0d5e09a90fb6e3e.woff",
+    "static/media/inter-latin-ext-400-normal.woff2": "/Events/apl-website/build/static/media/inter-latin-ext-400-normal.0f9e8d4e940df8f6edfe.woff2",
+    "static/media/inter-latin-400-normal.woff": "/Events/apl-website/build/static/media/inter-latin-400-normal.08a02fd275ecea6ef662.woff",
+    "static/media/inter-latin-400-normal.woff2": "/Events/apl-website/build/static/media/inter-latin-400-normal.f1535355a7df553be385.woff2",
+    "static/media/inter-cyrillic-ext-400-normal.woff": "/Events/apl-website/build/static/media/inter-cyrillic-ext-400-normal.cd2ad378115f549d3c5b.woff",
+    "static/media/inter-greek-400-normal.woff": "/Events/apl-website/build/static/media/inter-greek-400-normal.1eeaf1d0bde712085ffc.woff",
+    "static/media/inter-cyrillic-ext-400-normal.woff2": "/Events/apl-website/build/static/media/inter-cyrillic-ext-400-normal.ac62c8eba7f954b48546.woff2",
+    "static/media/inter-cyrillic-400-normal.woff": "/Events/apl-website/build/static/media/inter-cyrillic-400-normal.fa67b2dd0048a5433bd5.woff",
+    "static/media/inter-greek-400-normal.woff2": "/Events/apl-website/build/static/media/inter-greek-400-normal.be0e76b30a7663adf9eb.woff2",
+    "static/media/inter-greek-ext-400-normal.woff": "/Events/apl-website/build/static/media/inter-greek-ext-400-normal.708f2f7425851a3b7633.woff",
+    "static/media/inter-cyrillic-400-normal.woff2": "/Events/apl-website/build/static/media/inter-cyrillic-400-normal.fa78d8d6788399bf6527.woff2",
+    "static/media/inter-vietnamese-400-normal.woff": "/Events/apl-website/build/static/media/inter-vietnamese-400-normal.6eab7f5e6cae783b49bf.woff",
+    "static/media/inter-greek-ext-400-normal.woff2": "/Events/apl-website/build/static/media/inter-greek-ext-400-normal.1e2b9039d9ecdbea5d80.woff2",
+    "static/media/inter-vietnamese-400-normal.woff2": "/Events/apl-website/build/static/media/inter-vietnamese-400-normal.5952d3d3c5df5a2f8e09.woff2",
+    "index.html": "/Events/apl-website/build/index.html",
+    "main.9cbd827c.css.map": "/Events/apl-website/build/static/css/main.9cbd827c.css.map",
+    "main.aaab5abc.js.map": "/Events/apl-website/build/static/js/main.aaab5abc.js.map",
+    "453.4b0e5890.chunk.js.map": "/Events/apl-website/build/static/js/453.4b0e5890.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.928add91.css",
-    "static/js/main.aa9dac09.js"
+    "static/css/main.9cbd827c.css",
+    "static/js/main.aaab5abc.js"
   ]
 }
