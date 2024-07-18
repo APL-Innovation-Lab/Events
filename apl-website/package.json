@@ -2,7 +2,7 @@
   "name": "apl-website",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/Events/apl-website/build/",
+  "homepage": "https://apl-innovation-lab.github.io/Events/apl-website/",
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
